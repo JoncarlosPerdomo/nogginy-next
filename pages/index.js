@@ -3,6 +3,8 @@ import Layout, { siteTitle } from '../components/layout'
 import useSWR from 'swr'
 import Link from 'next/link'
 import Date from '../components/date'
+import Button from '../components/outlineButton'
+import { useRouter } from 'next/router'
 
 export async function getStaticProps() {
   const res = await fetch('https://opentdb.com/api.php?amount=10')
@@ -35,11 +37,8 @@ function Questions() {
 
 export default function Home({ questions }) {
   return (
-    <div className="pt-20">
-      <h1 className="text-5xl font-normal text-center text-white font-Catamaran">
-        Welcome
-      </h1>
-      <h2 className="absolute top-0 left-0 text-2xl text-white font-Catamaran">
+    <div className="pt-20 bg-sky-400">
+      <h2 className="absolute text-2xl text-white top-4 left-6 font-Catamaran">
         nogginy
       </h2>
       {/* <img
@@ -51,20 +50,17 @@ export default function Home({ questions }) {
       /> */}
       {/* <ColorSelection /> */}
       <div className="text-center">
-        <button
-          type="button"
-          className="px-4 py-2 m-4 text-xl text-white rounded-lg outline outline-4 hover:bg-white hover:text-sky-400 hover:outline hover:outline-4 hover:outline-offset-8 hover:outline-sky-400"
-          onClick={() => navigate('/nogginy/quiz')}
-        >
-          Single
-        </button>
-        <button
-          type="button"
-          className="px-4 py-2 m-4 text-xl text-white rounded-lg outline outline-4 hover:bg-white hover:text-sky-400 hover:outline hover:outline-4 hover:outline-offset-8 hover:outline-sky-400"
-          // onClick={() => gameModeHandler("multiplayer")}
-        >
-          Multiplayer
-        </button>
+        <h1 className="text-5xl font-normal text-white font-Catamaran">
+          Welcome
+        </h1>
+      </div>
+      <div className="text-center">
+        <Link href="/single" passHref>
+          <Button>Single</Button>
+        </Link>
+        <Link href="/multi" passHref>
+          <Button>Multiplayer</Button>
+        </Link>
       </div>
     </div>
   )
