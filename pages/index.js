@@ -37,7 +37,7 @@ function Questions() {
 
 export default function Home({ questions }) {
   return (
-    <div className="pt-20 bg-sky-400">
+    <div className="pt-20 bg-green-600">
       <h2 className="absolute text-2xl text-white top-4 left-6 font-Catamaran">
         nogginy
       </h2>
