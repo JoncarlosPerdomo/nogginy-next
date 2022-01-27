@@ -54,12 +54,12 @@ export default function Home({ questions }) {
           Welcome
         </h1>
       </div>
-      <div className="text-center">
+      <div className="text-center rounded-lg">
         <Link href="/single" passHref>
-          <Button>Single</Button>
+          <Button label="Single" />
         </Link>
         <Link href="/multi" passHref>
-          <Button>Multiplayer</Button>
+          <Button label="Multiplayer" />
         </Link>
       </div>
     </div>
