@@ -53,14 +53,14 @@ export default function Home({ questions }) {
       <div className="text-center">
         <button
           type="button"
-          className="m-4 text-xl text-white rounded-sm outline outline-4 outline-offset-8 hover:bg-white hover:text-sky-400 hover:outline hover:outline-4 hover:outline-offset-8 hover:outline-sky-400"
+          className="px-4 py-2 m-4 text-xl text-white rounded-lg outline outline-4 hover:bg-white hover:text-sky-400 hover:outline hover:outline-4 hover:outline-offset-8 hover:outline-sky-400"
           onClick={() => navigate('/nogginy/quiz')}
         >
           Single
         </button>
         <button
           type="button"
-          className="m-4 text-xl text-white rounded-sm outline outline-4 outline-offset-8 hover:bg-white hover:text-sky-400 hover:outline hover:outline-4 hover:outline-offset-8 hover:outline-sky-400"
+          className="px-4 py-2 m-4 text-xl text-white rounded-lg outline outline-4 hover:bg-white hover:text-sky-400 hover:outline hover:outline-4 hover:outline-offset-8 hover:outline-sky-400"
           // onClick={() => gameModeHandler("multiplayer")}
         >
           Multiplayer
