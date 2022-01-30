@@ -5,7 +5,7 @@ const single = () => {
   const [category, setCategory] = useState(null)
 
   return (
-    <div className="text-center font-Catamaran">
+    <div className="fixed h-full w-full bg-sky-400 text-center font-Catamaran">
       <div>
         <label className="text-3xl text-white" htmlFor="trivia_difficulty">
           Choose a Difficulty:

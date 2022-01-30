@@ -4,7 +4,7 @@ const OutlineButton = ({ label, ...props }) => {
   return (
     <button
       type="button"
-      className="px-4 py-2 m-4 text-xl text-white rounded-lg outline outline-4 hover:bg-white hover:text-sky-400 hover:outline hover:outline-4 hover:outline-offset-8 hover:outline-sky-400"
+      className=" hover:ring-white-400 m-4 rounded-lg px-4 py-2 text-xl text-white ring-4 ring-white hover:bg-white hover:text-sky-400 hover:ring-4 "
       {...props}
     >
       {label}

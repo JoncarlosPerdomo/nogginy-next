@@ -3,8 +3,19 @@ import Layout, { siteTitle } from '../components/layout'
 import useSWR from 'swr'
 import Link from 'next/link'
 import Date from '../components/date'
-import Button from '../components/outlineButton'
 import { useRouter } from 'next/router'
+import {
+  Button,
+  createStyles,
+  AppShell,
+  Navbar,
+  Header,
+  Burger,
+  Text,
+  useMantineTheme,
+  MediaQuery,
+} from '@mantine/core'
+import { useState } from 'react'
 
 export async function getStaticProps() {
   const res = await fetch('https://opentdb.com/api.php?amount=10')
@@ -22,6 +33,23 @@ export async function getStaticProps() {
   // }
 }
 
+const useStyles = createStyles((theme, _params, getRef) => {
+  const child = getRef('child')
+
+  return {
+    button: {
+      // subscribe to color scheme changes right in your styles
+      color: theme.colors.gray[0],
+      borderColor: theme.colors.gray[0],
+      borderWidth: '3px',
+      '&:hover': {
+        backgroundColor: theme.colors.gray[0],
+        color: theme.colors.blue[4],
+      },
+    },
+  }
+})
+
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 function Questions() {
@@ -36,32 +64,55 @@ function Questions() {
 }
 
 export default function Home({ questions }) {
+  const { classes } = useStyles()
+  const [opened, setOpened] = useState(false)
+  const theme = useMantineTheme()
+
   return (
-    <div className="pt-20 bg-sky-400">
-      <h2 className="absolute text-2xl text-white top-4 left-6 font-Catamaran">
-        nogginy
-      </h2>
-      {/* <img
+    <AppShell
+      // fixed prop on AppShell will be automatically added to Header and Navbar
+      fixed
+      header={
+        <Header height={70} padding="md" className="bg-sky-400">
+          <h2 className="absolute top-4 left-6 font-Catamaran text-2xl text-white">
+            nogginy
+          </h2>
+        </Header>
+      }
+      padding={0}
+    >
+      <div className="fixed h-full w-full bg-sky-400 pt-20">
+        {/* <img
         src={userData.img}
         className="custom"
         alt="Pic"
         width="300"
         height="300"
       /> */}
-      {/* <ColorSelection /> */}
-      <div className="text-center">
-        <h1 className="text-5xl font-normal text-white font-Catamaran">
-          Welcome
-        </h1>
+        {/* <ColorSelection /> */}
+        <div className="text-center">
+          <h1 className="font-Catamaran text-5xl font-normal text-white">
+            Welcome
+          </h1>
+        </div>
+        <div className="text-center ">
+          <Link href="/single">
+            <Button
+              component="a"
+              className={classes.button}
+              variant="outline"
+              mx="sm"
+            >
+              Single
+            </Button>
+          </Link>
+          <Link href="/multi">
+            <Button component="a" variant="outline" className={classes.button}>
+              Multi
+            </Button>
+          </Link>
+        </div>
       </div>
-      <div className="text-center rounded-lg">
-        <Link href="/single" passHref>
-          <Button label="Single" />
-        </Link>
-        <Link href="/multi" passHref>
-          <Button label="Multiplayer" />
-        </Link>
-      </div>
-    </div>
+    </AppShell>
   )
 }

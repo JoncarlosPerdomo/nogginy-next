@@ -1,9 +1,23 @@
 import '../styles/globals.css'
+import Head from 'next/head'
+import { MantineProvider } from '@mantine/core'
 
 export default function App({ Component, pageProps }) {
   return (
-    <div className="fixed w-screen h-screen bg-sky-400">
-      <Component {...pageProps} />
-    </div>
+    <>
+      <Head>
+        <title>Nogginy</title>
+      </Head>
+      <MantineProvider
+        withGlobalStyles
+        withNormalizeCSS
+        // theme={{
+        //   /** Put your mantine theme override here */
+        //   colorScheme: 'light',
+        // }}
+      >
+        <Component {...pageProps} />
+      </MantineProvider>
+    </>
   )
 }
