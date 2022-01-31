@@ -1,20 +1,17 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
 
-const name = 'Joncarlos Perdomo'
-export const siteTitle = 'Next.js Sample Website'
+const name = 'Joncarlos Perdomo';
+export const siteTitle = 'Next.js Sample Website';
 
 export default function Layout({ children, home }) {
   return (
-    <div className="max-w-xl px-4 py-0 mx-auto mt-12 mb-24 ">
+    <div className="mx-auto mt-12 mb-24 max-w-xl px-4 py-0 ">
       <Head>
         <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@900&display=swap" />
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
+        <meta name="description" content="Learn how to build a personal website using Next.js" />
         <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
@@ -27,14 +24,7 @@ export default function Layout({ children, home }) {
       <header className="flex flex-col items-center">
         {home ? (
           <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className="rounded-full"
-              height={144}
-              width={144}
-              alt={name}
-            />
+            <Image priority src="/images/profile.jpg" className="rounded-full" height={144} width={144} alt={name} />
             <h1 className="text-4xl">{name}</h1>
           </>
         ) : (
@@ -68,5 +58,5 @@ export default function Layout({ children, home }) {
         </div>
       )}
     </div>
-  )
+  );
 }

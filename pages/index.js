@@ -1,9 +1,9 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import useSWR from 'swr'
-import Link from 'next/link'
-import Date from '../components/date'
-import { useRouter } from 'next/router'
+import Head from 'next/head';
+import Layout, { siteTitle } from '../components/layout';
+import useSWR from 'swr';
+import Link from 'next/link';
+import Date from '../components/date';
+import { useRouter } from 'next/router';
 import {
   Button,
   createStyles,
@@ -14,18 +14,18 @@ import {
   Text,
   useMantineTheme,
   MediaQuery,
-} from '@mantine/core'
-import { useState } from 'react'
+} from '@mantine/core';
+import { useState } from 'react';
 
 export async function getStaticProps() {
-  const res = await fetch('https://opentdb.com/api.php?amount=10')
-  const questions = await res.json()
-  console.log(questions)
+  const res = await fetch('https://opentdb.com/api.php?amount=10');
+  const questions = await res.json();
+  console.log(questions);
   return {
     props: {
       questions,
     },
-  }
+  };
   // return {
   //   props: {
   //     allPostsData,
@@ -34,7 +34,7 @@ export async function getStaticProps() {
 }
 
 const useStyles = createStyles((theme, _params, getRef) => {
-  const child = getRef('child')
+  const child = getRef('child');
 
   return {
     button: {
@@ -47,26 +47,23 @@ const useStyles = createStyles((theme, _params, getRef) => {
         color: theme.colors.blue[4],
       },
     },
-  }
-})
+  };
+});
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json())
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 function Questions() {
-  const { data, error } = useSWR(
-    'https://opentdb.com/api.php?amount=10',
-    fetcher
-  )
+  const { data, error } = useSWR('https://opentdb.com/api.php?amount=10', fetcher);
 
-  if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
-  return <div>hello {data.results[0].question}!</div>
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+  return <div>hello {data.results[0].question}!</div>;
 }
 
 export default function Home({ questions }) {
-  const { classes } = useStyles()
-  const [opened, setOpened] = useState(false)
-  const theme = useMantineTheme()
+  const { classes } = useStyles();
+  const [opened, setOpened] = useState(false);
+  const theme = useMantineTheme();
 
   return (
     <AppShell
@@ -74,9 +71,7 @@ export default function Home({ questions }) {
       fixed
       header={
         <Header height={70} padding="md" className="bg-sky-400">
-          <h2 className="absolute top-4 left-6 font-Catamaran text-2xl text-white">
-            nogginy
-          </h2>
+          <h2 className="absolute top-4 left-6 font-Catamaran text-2xl text-white">nogginy</h2>
         </Header>
       }
       padding={0}
@@ -91,18 +86,11 @@ export default function Home({ questions }) {
       /> */}
         {/* <ColorSelection /> */}
         <div className="text-center">
-          <h1 className="font-Catamaran text-5xl font-normal text-white">
-            Welcome
-          </h1>
+          <h1 className="font-Catamaran text-5xl font-normal text-white">Welcome</h1>
         </div>
         <div className="text-center ">
           <Link href="/single">
-            <Button
-              component="a"
-              className={classes.button}
-              variant="outline"
-              mx="sm"
-            >
+            <Button component="a" className={classes.button} variant="outline" mx="sm">
               Single
             </Button>
           </Link>
@@ -114,5 +102,5 @@ export default function Home({ questions }) {
         </div>
       </div>
     </AppShell>
-  )
+  );
 }

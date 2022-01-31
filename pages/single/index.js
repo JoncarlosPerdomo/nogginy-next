@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import Button from '../../components/outlineButton'
+import React, { useState } from 'react';
+import Button from '../../components/outlineButton';
 const single = () => {
-  const [difficulty, setDifficulty] = useState(null)
-  const [category, setCategory] = useState(null)
+  const [difficulty, setDifficulty] = useState(null);
+  const [category, setCategory] = useState(null);
 
   return (
     <div className="fixed h-full w-full bg-sky-400 text-center font-Catamaran">
@@ -12,11 +12,7 @@ const single = () => {
         </label>
       </div>
       <div>
-        <select
-          onChange={() => setDifficulty(e.target.value)}
-          name="trivia_difficulty"
-          data-testid="difficulty"
-        >
+        <select onChange={() => setDifficulty(e.target.value)} name="trivia_difficulty" data-testid="difficulty">
           <option value="any">Any Difficulty</option>
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
@@ -35,7 +31,7 @@ const single = () => {
 
       <Button onClick={() => setGameStart(true)}>Play Game</Button>
     </div>
-  )
-}
+  );
+};
 
-export default single
+export default single;

@@ -1,18 +1,18 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import useSWR from 'swr'
-import Link from 'next/link'
-import Date from '../components/date'
+import Head from 'next/head';
+import Layout, { siteTitle } from '../components/layout';
+import useSWR from 'swr';
+import Link from 'next/link';
+import Date from '../components/date';
 
 export async function getStaticProps() {
-  const res = await fetch('https://opentdb.com/api.php?amount=10')
-  const questions = await res.json()
-  console.log(questions)
+  const res = await fetch('https://opentdb.com/api.php?amount=10');
+  const questions = await res.json();
+  console.log(questions);
   return {
     props: {
       questions,
     },
-  }
+  };
   // return {
   //   props: {
   //     allPostsData,
@@ -20,17 +20,14 @@ export async function getStaticProps() {
   // }
 }
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json())
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 function Questions() {
-  const { data, error } = useSWR(
-    'https://opentdb.com/api.php?amount=10',
-    fetcher
-  )
+  const { data, error } = useSWR('https://opentdb.com/api.php?amount=10', fetcher);
 
-  if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
-  return <div>hello {data.results[0].question}!</div>
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+  return <div>hello {data.results[0].question}!</div>;
 }
 
 export default function Home({ questions }) {
@@ -70,5 +67,5 @@ export default function Home({ questions }) {
         </ul> */}
       </section>
     </Layout>
-  )
+  );
 }

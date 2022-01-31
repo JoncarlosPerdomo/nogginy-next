@@ -1,6 +1,6 @@
-import '../styles/globals.css'
-import Head from 'next/head'
-import { MantineProvider } from '@mantine/core'
+import '../styles/globals.css';
+import Head from 'next/head';
+import { MantineProvider } from '@mantine/core';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -19,5 +19,5 @@ export default function App({ Component, pageProps }) {
         <Component {...pageProps} />
       </MantineProvider>
     </>
-  )
+  );
 }

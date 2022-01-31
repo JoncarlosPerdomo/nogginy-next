@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const OutlineButton = ({ label, ...props }) => {
   return (
@@ -9,7 +9,7 @@ const OutlineButton = ({ label, ...props }) => {
     >
       {label}
     </button>
-  )
-}
+  );
+};
 
-export default OutlineButton
+export default OutlineButton;
