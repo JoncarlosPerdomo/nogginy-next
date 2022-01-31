@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from '../../components/outlineButton';
+import Button from '@/components/outlineButton';
 const single = () => {
   const [difficulty, setDifficulty] = useState(null);
   const [category, setCategory] = useState(null);

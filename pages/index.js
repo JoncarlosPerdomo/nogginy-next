@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import Layout, { siteTitle } from '../components/layout';
+import Layout, { siteTitle } from '@/components/layout';
 import useSWR from 'swr';
 import Link from 'next/link';
-import Date from '../components/date';
+import Date from '../src/components/date';
 import { useRouter } from 'next/router';
 import {
   Button,

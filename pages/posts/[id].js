@@ -1,7 +1,7 @@
-import Layout from '../../components/layout';
+import Layout from '../../src/components/layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import Head from 'next/head';
-import Date from '../../components/date';
+import Date from '../../src/components/date';
 
 export default function Post({ postData }) {
   return (
