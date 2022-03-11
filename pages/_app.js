@@ -1,6 +1,5 @@
 import '../styles/globals.css';
 import Head from 'next/head';
-import { MantineProvider } from '@mantine/core';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -8,16 +7,7 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Nogginy</title>
       </Head>
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        // theme={{
-        //   /** Put your mantine theme override here */
-        //   colorScheme: 'light',
-        // }}
-      >
-        <Component {...pageProps} />
-      </MantineProvider>
+      <Component {...pageProps} />
     </>
   );
 }
