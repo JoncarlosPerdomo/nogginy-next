@@ -1,10 +1,7 @@
-import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
+import { Button, Container, Stack, Typography, Grid } from "@mui/material";
+import { decode } from "html-entities";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import Stack from "@mui/material/Stack";
-import { decode } from "html-entities";
 
 function shuffle(array) {
   let currentIndex = array.length,
@@ -84,26 +81,30 @@ const Play = () => {
     );
   }
   return (
-    <Container maxWidth="xl">
+    <Container>
       <Stack
         justifyContent="center"
         alignItems="center"
         style={{ minHeight: "100vh" }}
+        spacing={4}
       >
         <Typography>Question {questionNumber + 1}:</Typography>
         <Typography>{data.results[questionNumber].question}</Typography>
-        <Stack
+        <Grid
+          container
           direction="row"
           justifyContent="center"
+          alignItems="center"
           spacing={2}
-          style={{ minWidth: "100vw" }}
         >
           {data.results[questionNumber].all_choices.map((answer, index) => (
-            <Button variant="outlined" key={index} onClick={handleChoiceClick}>
-              {answer}
-            </Button>
+            <Grid item key={index}>
+              <Button variant="outlined" onClick={handleChoiceClick}>
+                {answer}
+              </Button>
+            </Grid>
           ))}
-        </Stack>
+        </Grid>
       </Stack>
     </Container>
   );
