@@ -7,6 +7,7 @@ specifiers:
   '@mui/material': ^5.5.0
   eslint: 8.11.0
   eslint-config-next: 12.1.0
+  html-entities: ^2.3.2
   next: 12.1.0
   react: 17.0.2
   react-dom: 17.0.2
@@ -16,6 +17,7 @@ dependencies:
   '@emotion/styled': 11.8.1_fa30c4a31333a43d23a4fe708e0dc178
   '@mui/icons-material': 5.5.0_@mui+material@5.5.0+react@17.0.2
   '@mui/material': 5.5.0_eb8585ddc00e6d8e3b40a6701d59ed38
+  html-entities: 2.3.2
   next: 12.1.0_react-dom@17.0.2+react@17.0.2
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -1398,6 +1400,10 @@ packages:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
     dependencies:
       react-is: 16.13.1
+    dev: false
+
+  /html-entities/2.3.2:
+    resolution: {integrity: sha512-c3Ab/url5ksaT0WyleslpBEthOzWhrjQbg75y7XUsfSzi3Dgzt0l8w5e7DylRn15MTlMMD58dTfzddNS2kcAjQ==}
     dev: false
 
   /ignore/5.2.0:

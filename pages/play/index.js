@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Stack from "@mui/material/Stack";
+import { decode } from "html-entities";
 
 function shuffle(array) {
   let currentIndex = array.length,
@@ -38,6 +39,7 @@ const Play = () => {
       .then((data) => {
         data.results.map((obj) => {
           obj.correct = false;
+          obj.question = decode(obj.question);
           obj.all_choices = obj.incorrect_answers;
           obj.all_choices.push(obj.correct_answer);
           shuffle(obj.all_choices);
