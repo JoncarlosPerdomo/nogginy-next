@@ -2,6 +2,11 @@ import { Button, Container, Stack, Typography, Grid } from "@mui/material";
 import { decode } from "html-entities";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 function shuffle(array) {
   let currentIndex = array.length,
@@ -23,10 +28,29 @@ const Play = () => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0);
+  const [gameStart, setGameStart] = useState(false);
 
-  useEffect(() => {
+  const [amount, setAmount] = useState(10);
+  const handleChange = (event) => {
+    setAmount(event.target.value);
+  };
+
+  const handleChoiceClick = (e) => {
+    console.log(e.target.innerText);
+    console.log(data.results[questionNumber].correct_answer);
+    if (
+      e.target.innerText.toUpperCase() ===
+      data.results[questionNumber].correct_answer.toUpperCase()
+    ) {
+      data.results[questionNumber].correct = true;
+    }
+    setQuestionNumber(questionNumber + 1);
+  };
+
+  const handlePlayClick = () => {
+    setGameStart(true);
     setLoading(true);
-    fetch("https://opentdb.com/api.php?amount=10")
+    fetch(`https://opentdb.com/api.php?amount=${amount}`)
       .then((res) => res.json())
       .then((data) => {
         data.results.map((element) => {
@@ -44,23 +68,10 @@ const Play = () => {
         setData(data);
         setLoading(false);
       });
-  }, []);
-
-  const handleChoiceClick = (e) => {
-    console.log(e.target.innerText);
-    console.log(data.results[questionNumber].correct_answer);
-    if (
-      e.target.innerText.toUpperCase() ===
-      data.results[questionNumber].correct_answer.toUpperCase()
-    ) {
-      data.results[questionNumber].correct = true;
-    }
-    setQuestionNumber(questionNumber + 1);
   };
 
-  if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>No profile data</p>;
-  if (!data.results[questionNumber]) {
+  if (gameStart && isLoading) return <p>Loading...</p>;
+  if (gameStart && !data.results[questionNumber]) {
     return (
       <Container>
         <Stack
@@ -80,7 +91,7 @@ const Play = () => {
       </Container>
     );
   }
-  return (
+  return gameStart ? (
     <Container>
       <Stack
         justifyContent="center"
@@ -107,6 +118,29 @@ const Play = () => {
         </Grid>
       </Stack>
     </Container>
+  ) : (
+    <Stack
+      justifyContent="center"
+      alignItems="center"
+      style={{ minHeight: "100vh" }}
+      spacing={4}
+    >
+      <Typography>Number of Questions</Typography>
+      <Box sx={{ minWidth: 120 }}>
+        <FormControl fullWidth>
+          <InputLabel>Amount</InputLabel>
+          <Select value={amount} label="Category" onChange={handleChange}>
+            <MenuItem value={1}>One</MenuItem>
+            <MenuItem value={5}>Five</MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      {/* <Typography>Select Difficulty</Typography> */}
+      <Button variant="outlined" onClick={handlePlayClick}>
+        Play
+      </Button>
+    </Stack>
   );
 };
 
