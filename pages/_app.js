@@ -5,9 +5,17 @@ import { lightBlue } from "@mui/material/colors";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
-  background: {
-    default: "#03a9f4",
-    paper: "#4fc3f7",
+  palette: {
+    background: {
+      default: "#03a9f4",
+      paper: "#4fc3f7",
+    },
+    primary: {
+      main: "#ffffff",
+    },
+    text: {
+      primary: "#ffffff",
+    },
   },
 });
 

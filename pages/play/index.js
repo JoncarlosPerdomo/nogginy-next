@@ -9,14 +9,10 @@ import { decode } from "html-entities";
 function shuffle(array) {
   let currentIndex = array.length,
     randomIndex;
-
-  // While there remain elements to shuffle...
   while (currentIndex != 0) {
-    // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
 
-    // And swap it with the current element.
     [array[currentIndex], array[randomIndex]] = [
       array[randomIndex],
       array[currentIndex],
@@ -29,7 +25,6 @@ function shuffle(array) {
 const Play = () => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
-  const [gameFinished, setGameFinished] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0);
 
   useEffect(() => {
@@ -37,16 +32,18 @@ const Play = () => {
     fetch("https://opentdb.com/api.php?amount=10")
       .then((res) => res.json())
       .then((data) => {
-        data.results.map((obj) => {
-          obj.correct = false;
-          obj.question = decode(obj.question);
-          obj.all_choices = obj.incorrect_answers;
-          obj.all_choices.push(obj.correct_answer);
-          obj.all_choices.forEach((element) => {
+        data.results.map((element) => {
+          element.correct = false;
+          element.question = decode(element.question);
+          element.all_choices = element.incorrect_answers;
+          element.all_choices.push(element.correct_answer);
+          element.all_choices.forEach((element) => {
             decode(element);
           });
-          shuffle(obj.all_choices);
+          shuffle(element.all_choices);
+          element.correct_answer = decode(element.correct_answer);
         });
+        data.results.correct_answer = decode(data);
         setData(data);
         setLoading(false);
       });
