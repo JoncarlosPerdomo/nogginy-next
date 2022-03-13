@@ -86,7 +86,7 @@ const Play = () => {
       >
         <Typography>Question {questionNumber + 1}:</Typography>
         <Typography>{data.results[questionNumber].question}</Typography>
-        <Stack direction="row" spacing={2}>
+        <Stack direction="row" spacing={2} style={{ minWidth: "100vw" }}>
           {data.results[questionNumber].all_choices.map((answer, index) => (
             <Button variant="outlined" key={index} onClick={handleChoiceClick}>
               {answer}
