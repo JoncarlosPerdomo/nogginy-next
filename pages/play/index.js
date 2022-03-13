@@ -42,6 +42,9 @@ const Play = () => {
           obj.question = decode(obj.question);
           obj.all_choices = obj.incorrect_answers;
           obj.all_choices.push(obj.correct_answer);
+          obj.all_choices.forEach((element) => {
+            decode(element);
+          });
           shuffle(obj.all_choices);
         });
         setData(data);
@@ -65,16 +68,22 @@ const Play = () => {
   if (!data) return <p>No profile data</p>;
   if (!data.results[questionNumber]) {
     return (
-      <div>
-        {data.results.map((question, index) => (
-          <Typography key={index}>
-            Question {index + 1}: {question.correct ? "correct" : "incorrect"}
-          </Typography>
-        ))}
-        <Link href="/" passHref>
-          <Button variant="outlined">Home</Button>
-        </Link>
-      </div>
+      <Container>
+        <Stack
+          justifyContent="center"
+          alignItems="center"
+          style={{ minHeight: "100vh" }}
+        >
+          {data.results.map((question, index) => (
+            <Typography key={index}>
+              Question {index + 1}: {question.correct ? "correct" : "incorrect"}
+            </Typography>
+          ))}
+          <Link href="/" passHref>
+            <Button variant="outlined">Home</Button>
+          </Link>
+        </Stack>
+      </Container>
     );
   }
   return (
@@ -86,7 +95,12 @@ const Play = () => {
       >
         <Typography>Question {questionNumber + 1}:</Typography>
         <Typography>{data.results[questionNumber].question}</Typography>
-        <Stack direction="row" spacing={2} style={{ minWidth: "100vw" }}>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          spacing={2}
+          style={{ minWidth: "100vw" }}
+        >
           {data.results[questionNumber].all_choices.map((answer, index) => (
             <Button variant="outlined" key={index} onClick={handleChoiceClick}>
               {answer}
