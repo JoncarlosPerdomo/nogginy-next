@@ -3,11 +3,11 @@ import Head from "next/head";
 import CssBaseline from "@mui/material/CssBaseline";
 import { lightBlue } from "@mui/material/colors";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-
+import MenuAppBar from "../components/MenuAppBar.js";
 const theme = createTheme({
   palette: {
     background: {
-      default: "#03a9f4",
+      default: "#29B6F6",
       paper: "#4fc3f7",
     },
     primary: {
@@ -16,6 +16,13 @@ const theme = createTheme({
     text: {
       primary: "#ffffff",
     },
+  },
+  typography: {
+    fontFamily: "Catamaran",
+    fontWeightLight: 400,
+    fontWeightRegular: 700,
+    fontWeightMedium: 800,
+    fontWeightBold: 900,
   },
 });
 
@@ -27,6 +34,7 @@ function MyApp({ Component, pageProps }) {
         <Head>
           <meta name="viewport" content="initial-scale=1, width=device-width" />
         </Head>
+        <MenuAppBar />
         <Component {...pageProps} />
       </ThemeProvider>
     </>
