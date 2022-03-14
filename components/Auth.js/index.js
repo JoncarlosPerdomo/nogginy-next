@@ -17,6 +17,20 @@ export default function Auth() {
     }
   };
 
+  const handleGitHubLogin = async () => {
+    try {
+      setLoading(true);
+      const { error } = await supabase.auth.signIn({
+        provider: "github",
+      });
+      if (error) throw error;
+    } catch (error) {
+      alert(error.error_description || error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="row flex flex-center">
       <div className="col-6 form-widget">
@@ -43,6 +57,18 @@ export default function Auth() {
             disabled={loading}
           >
             <span>{loading ? "Loading" : "Send magic link"}</span>
+          </button>
+        </div>
+        <div>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              handleGitHubLogin(email);
+            }}
+            className="button block"
+            disabled={loading}
+          >
+            <span>{loading ? "Loading" : "Login with GitHub"}</span>
           </button>
         </div>
       </div>
