@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
+
 export default function Auth() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
@@ -17,18 +18,10 @@ export default function Auth() {
     }
   };
 
-  const handleGitHubLogin = async () => {
-    try {
-      setLoading(true);
-      const { error } = await supabase.auth.signIn({
-        provider: "github",
-      });
-      if (error) throw error;
-    } catch (error) {
-      alert(error.error_description || error.message);
-    } finally {
-      setLoading(false);
-    }
+  const signInWithGithub = async () => {
+    const { user, session, error } = await supabase.auth.signIn({
+      provider: "github",
+    });
   };
 
   return (
@@ -58,17 +51,13 @@ export default function Auth() {
           >
             <span>{loading ? "Loading" : "Send magic link"}</span>
           </button>
-        </div>
-        <div>
           <button
             onClick={(e) => {
               e.preventDefault();
-              handleGitHubLogin(email);
+              signInWithGithub();
             }}
-            className="button block"
-            disabled={loading}
           >
-            <span>{loading ? "Loading" : "Login with GitHub"}</span>
+            Sign in with Github
           </button>
         </div>
       </div>

@@ -1,9 +1,20 @@
+import { Button, Container, Stack, Typography } from "@mui/material";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { Button, Container, Stack, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import { supabase } from "../utils/supabaseClient";
 
 export default function Home() {
+  const [session, setSession] = useState(null);
+
+  useEffect(() => {
+    setSession(supabase.auth.session());
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+  }, []);
   return (
     <Container>
       <Head>
@@ -18,6 +29,9 @@ export default function Home() {
           style={{ minHeight: "100vh" }}
           spacing={4}
         >
+          <Typography variant="h3" align="center">
+            {!session ? "Not logged in" : "Logged in"}
+          </Typography>
           <Typography variant="h3" align="center">
             Welcome to Nogginy!
           </Typography>

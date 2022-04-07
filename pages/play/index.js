@@ -72,6 +72,7 @@ const Play = () => {
 
   if (gameStart && isLoading) return <p>Loading...</p>;
   if (gameStart && !data.results[questionNumber]) {
+    console.log(data);
     return (
       <Container>
         <Stack
@@ -81,7 +82,8 @@ const Play = () => {
         >
           {data.results.map((question, index) => (
             <Typography key={index}>
-              Question {index + 1}: {question.correct ? "correct" : "incorrect"}
+              Question {index + 1}: {question.question}:
+              {question.correct ? " correct" : " incorrect"}
             </Typography>
           ))}
           <Link href="/" passHref>

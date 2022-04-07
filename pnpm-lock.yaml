@@ -5,7 +5,7 @@ specifiers:
   '@emotion/styled': ^11.8.1
   '@mui/icons-material': ^5.5.0
   '@mui/material': ^5.5.0
-  '@supabase/supabase-js': ^1.31.1
+  '@supabase/supabase-js': ^1.33.3
   eslint: 8.11.0
   eslint-config-next: 12.1.0
   html-entities: ^2.3.2
@@ -18,7 +18,7 @@ dependencies:
   '@emotion/styled': 11.8.1_fa30c4a31333a43d23a4fe708e0dc178
   '@mui/icons-material': 5.5.0_@mui+material@5.5.0+react@17.0.2
   '@mui/material': 5.5.0_eb8585ddc00e6d8e3b40a6701d59ed38
-  '@supabase/supabase-js': 1.31.1
+  '@supabase/supabase-js': 1.33.3
   html-entities: 2.3.2
   next: 12.1.0_react-dom@17.0.2+react@17.0.2
   react: 17.0.2
@@ -539,44 +539,53 @@ packages:
     resolution: {integrity: sha512-JLo+Y592QzIE+q7Dl2pMUtt4q8SKYI5jDrZxrozEQxnGVOyYE+GWK9eLkwTaeN9DDctlaRAQ3TBmzZ1qdLE30A==}
     dev: true
 
-  /@supabase/gotrue-js/1.22.5:
-    resolution: {integrity: sha512-OiA4GPpktomCKvJ8+EwWG6cCLpc5EN719Ij58VuL+/uusBl7tLlFsVx/THWtywG88bG33Jc5XE7no/LKaVPZNw==}
+  /@supabase/functions-js/1.3.3:
+    resolution: {integrity: sha512-35vO9niHRtzGe1QSvXKdOfvGPiX2KC44dGpWU6y0/gZCfTIgog/soU9HqABzQC/maVowO3hGLWfez5aN0MKfow==}
     dependencies:
       cross-fetch: 3.1.5
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@supabase/postgrest-js/0.37.1:
-    resolution: {integrity: sha512-Lm7eLuYzEr7ppGC84mlqpm8v9Vy8kyR6he6z3avrkccC8pwLOsxaK0bkKiV4LBwkJc7uARMTdlp+IskatHkz2g==}
+  /@supabase/gotrue-js/1.22.12:
+    resolution: {integrity: sha512-/baPkNiumE2B+OLSpvZquDsTqnOTAsG/07GBq5rXU8/e0rSyjljAFf8gnawGPezjlDGTFr2fjRYs0BYMz4LD/A==}
     dependencies:
       cross-fetch: 3.1.5
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@supabase/realtime-js/1.3.6:
-    resolution: {integrity: sha512-nkQv9A3Z6PgXl32rrQT+mG0oICSpTCTbjChh43GfSIaXXSZ10u5wMzaNqtp4jpqpyjwd8Zr2bDgwAo986T+xyw==}
+  /@supabase/postgrest-js/0.37.2:
+    resolution: {integrity: sha512-3Dgx5k3RvtKqc8DvR2BEyh2fVyjZe5P4e0zD1r8dyuVmpaYDaASZ2YeNVgyWXMCWH7xzrj4vepTYlKwfj78QLg==}
     dependencies:
-      '@types/websocket': 1.0.5
+      cross-fetch: 3.1.5
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@supabase/realtime-js/1.6.2:
+    resolution: {integrity: sha512-0aK2WoCYvS2lO2BGQwPaxz91oq76lJ+/rSzAMUDFe8mZFj+v4ugifDMUHKpSxJWqW4u4OB9cs3zw11qWlQQCrw==}
+    dependencies:
+      '@types/phoenix': 1.5.4
       websocket: 1.0.34
     dev: false
 
-  /@supabase/storage-js/1.6.4:
-    resolution: {integrity: sha512-vYcr1JGRf8Wr4v+lb8Ucl0bELwCZv8lT/PrYuhEKfJff6BI6/nTJp8rRZSRaDESQR8JlpaLaL+dmD/wsNqZnNQ==}
+  /@supabase/storage-js/1.7.0:
+    resolution: {integrity: sha512-f5EBw0wM96hKmnrXhgiqq2Reh9O0NgjKE+jkaKY4jQmfutefqaCAWn+cBzlmHs9h135H2ldaGmhWRFHUSkLt2g==}
     dependencies:
       cross-fetch: 3.1.5
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@supabase/supabase-js/1.31.1:
-    resolution: {integrity: sha512-9NMoW9DGf4TjBsvtyLVu3Br972E8yfjpEowEnWP0jMlF4J4zjHLSdgG9GLn/WZ0whlEugAo2QvwiWYKuENKRCw==}
+  /@supabase/supabase-js/1.33.3:
+    resolution: {integrity: sha512-wQyCoP03bs21UvfVxRYrFTBmYSGMXjFAKlmP66MACqWUfYLKgJJ3/xVFfOLyyi7M8QTYw8XUK+z4yqQ5p1l88Q==}
     dependencies:
-      '@supabase/gotrue-js': 1.22.5
-      '@supabase/postgrest-js': 0.37.1
-      '@supabase/realtime-js': 1.3.6
-      '@supabase/storage-js': 1.6.4
+      '@supabase/functions-js': 1.3.3
+      '@supabase/gotrue-js': 1.22.12
+      '@supabase/postgrest-js': 0.37.2
+      '@supabase/realtime-js': 1.6.2
+      '@supabase/storage-js': 1.7.0
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -585,12 +594,12 @@ packages:
     resolution: {integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=}
     dev: true
 
-  /@types/node/17.0.21:
-    resolution: {integrity: sha512-DBZCJbhII3r90XbQxI8Y9IjjiiOGlZ0Hr32omXIZvwwZ7p4DMMXGrKXVyPfuoBOri9XNtL0UK69jYIBIsRX3QQ==}
-    dev: false
-
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
+    dev: false
+
+  /@types/phoenix/1.5.4:
+    resolution: {integrity: sha512-L5eZmzw89eXBKkiqVBcJfU1QGx9y+wurRIEgt0cuLH0hwNtVUxtx+6cu0R2STwWj468sjXyBYPYDtGclUd1kjQ==}
     dev: false
 
   /@types/prop-types/15.7.4:
@@ -619,12 +628,6 @@ packages:
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
-    dev: false
-
-  /@types/websocket/1.0.5:
-    resolution: {integrity: sha512-NbsqiNX9CnEfC1Z0Vf4mE1SgAJ07JnRYcNex7AJ9zAVzmiGHmjKFEk7O4TJIsgv2B1sLEb6owKFZrACwdYngsQ==}
-    dependencies:
-      '@types/node': 17.0.21
     dev: false
 
   /@typescript-eslint/parser/5.14.0_eslint@8.11.0:
